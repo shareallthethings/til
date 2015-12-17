@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<div class="post-header mb2">
+  <h1>{{ page.title }}</h1>
+  <span class="post-meta">{{ page.date | date: "%B %-d, %Y" }}</span>
+    by <a href="http://twitter.com/{{ page.author.twitter }}">{{ page.author.name }}</a>.<br>
+
+  {% if page.update_date %}
+    <span class="post-meta">Updated: {{ page.update_date | date: "%B %-d, %Y" }}</span><br>
+  {% endif %}
+
+  <p class='category'>
+    {% for category in page.categories %}
+      <a>{{ category }}</a>
+    {% endfor %}
+  </p>
+</div>
+
+<article class="post-content">
+  {{ content }}
+</article>

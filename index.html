@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+<div class="home">
+
+  <div class="posts">
+    {% for post in paginator.posts %}
+      <div class="post post-link">
+        <p class='category'>
+          {% for category in post.categories %}
+            <a>{{ category }}</a>
+          {% endfor %}
+        </p>
+
+        <p class="post-meta">
+          {{ post.date | date: "%B %-d, %Y" }} by
+          <a href="http://twitter.com/{{ post.author.twitter }}">{{ post.author.name }}.</a>
+          <a href="{{ post.url | prepend: site.baseurl }}" class="permalink">permalink</a>
+        </p>
+
+        <h3 class="h2 post-title">{{ post.title }}</h3>
+
+        <p class="post-summary">
+          {{ post.content }}
+        </p>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% include pagination.html %}
+</div>
