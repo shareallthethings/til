@@ -1,7 +1,5 @@
 # Site settings
 title:       TIL
-email:       bernardo.amc@gmail.com
-author:      Bernardo Chaves
 description: 'Things learned. Share all the things.'
 baseurl:     ""
 url:         'http://shareallthethings.com'
@@ -10,11 +8,15 @@ url:         'http://shareallthethings.com'
 google_analytics: 'UA-3572676-15'
 
 # Build settings
-markdown:     redcarpet
+exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 's3_website.yml']
+permalink: pretty
+paginate: 20
+
+gems:
+- jekyll-assets
+- jekyll-paginate
+
+# markup processors
+markdown: redcarpet
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
-permalink:    pretty
-paginate:     20
-sass:
-  compressed: true
-exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile']
