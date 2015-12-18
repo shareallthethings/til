@@ -299,7 +299,10 @@ pre, code {
 }
 
 code {
-  color: #7a7a7a;
+  padding: 1px 3px;
+  border: 1px solid rgb(232, 232, 232);
+  color: #c25;
+  background-color: #f9f9f9;
 }
 
 pre {
@@ -308,6 +311,12 @@ pre {
   line-height: 1.11;
   overflow-x: scroll;
   margin-bottom: 0.88em;
+
+  code {
+    padding: 0;
+    border: none;
+    background-color: inherit;
+  }
 }
 
 .highlight .p {
