@@ -4,7 +4,7 @@ email:       bernardo.amc@gmail.com
 author:      Bernardo Chaves
 description: 'Things learned. Share all the things.'
 baseurl:     ""
-url:         'http://l:4000'
+url:         'http://shareallthethings.com'
 
 # Google analytics
 google_analytics: 'UA-3572676-15'
