@@ -23,5 +23,8 @@ redcarpet:
 
 # Assets
 assets:
+  compress:
+    css: true
+    js: true
   prefix: "/assets"
   digest: true
