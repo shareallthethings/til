@@ -5,7 +5,7 @@ date:       2015-12-15 16:00:00
 summary:    Method Introspection
 categories: ruby
 author:
-  name: Bernardo Chanves
+  name: Bernardo Chaves
   twitter: bernardoamc
 ---
 
