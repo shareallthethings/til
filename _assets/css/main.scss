@@ -96,29 +96,6 @@ body {
   opacity: 0.88;
 }
 
-.permalink {
-  float: right
-}
-
-.category {
-  display: block;
-  margin-bottom: 0px;
-
-  a {
-    border: 1px solid;
-    font-size: 12px;
-    color: white;
-    background-color: rgba(162,162,162,0.8);
-    padding: 3px 10px;
-    border-radius: 3px;
-    text-transform: uppercase;
-
-    &:hover {
-      background-color: rgba(162,162,162,1);
-    }
-  }
-}
-
 /*
   Table styles copied from Bootstrap
   Copyright (c) 2013 Twitter, Inc
@@ -250,7 +227,6 @@ table {
   font-size: 1rem;
   font-weight: 300;
   margin: 0;
-  padding: .25em 0;
   color: #7a7a7a;
   font-style: italic;
 }

@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'rake'
 gem 'jekyll'
-gem 'RedCloth'
+gem 'jekyll-assets'
+gem 'jekyll-paginate'
+gem 'redcarpet'
+gem 'rake'
 gem 's3_website'

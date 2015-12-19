@@ -7,17 +7,22 @@ layout: default
   <div class="posts">
     {% for post in paginator.posts %}
       <div class="post post-link">
-        <p class='category'>
-          {% for category in post.categories %}
+        <header>
+          <p class='category'>
+            {% for category in post.categories %}
             <a>{{ category }}</a>
-          {% endfor %}
-        </p>
+            {% endfor %}
+          </p>
 
-        <p class="post-meta">
-          {{ post.date | date: "%B %-d, %Y" }} by
-          <a href="http://twitter.com/{{ post.author.twitter }}">{{ post.author.name }}.</a>
-          <a href="{{ post.url | prepend: site.baseurl }}" class="permalink">permalink</a>
-        </p>
+          <span class="post-meta">
+            {{ post.date | date: "%B %-d, %Y" }} by
+            <a href="http://twitter.com/{{ post.author.twitter }}">{{ post.author.name }}.</a>
+          </span>
+
+          <span data-clipboard-text="{{ post.url | prepend: site.url }}" class="permalink">
+            Copy the permalink
+          </span>
+        </header>
 
         <h3 class="h2 post-title">{{ post.title }}</h3>
 
