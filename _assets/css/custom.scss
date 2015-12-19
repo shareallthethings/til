@@ -2,6 +2,14 @@
   float: right;
 }
 
+.post-link header {
+  overflow: overlay;
+
+  span {
+    display: inline-block;
+  }
+}
+
 @media (max-width: 767px) {
   .site-description {
     float: none;
@@ -15,6 +23,13 @@
 
   &:hover {
     color: #0096cc;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .permalink {
+    float: left;
+    margin-top: 10px;
   }
 }
 
