@@ -13,10 +13,15 @@ permalink: pretty
 paginate: 20
 
 gems:
-- jekyll-assets
-- jekyll-paginate
+  - jekyll-assets
+  - jekyll-paginate
 
 # markup processors
 markdown: redcarpet
 redcarpet:
   extensions: ['smart', 'tables', 'with_toc_data']
+
+# Assets
+assets:
+  prefix: "/assets"
+  digest: true

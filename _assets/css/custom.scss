@@ -1,0 +1,62 @@
+.site-description {
+  float: right;
+}
+
+@media (max-width: 767px) {
+  .site-description {
+    float: none;
+  }
+}
+
+.permalink {
+  float: right;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    color: #0096cc;
+  }
+}
+
+.category {
+  display: block;
+  margin-bottom: 0px;
+
+  a {
+    border: 1px solid;
+    font-size: 12px;
+    color: white;
+    background-color: rgba(162,162,162,0.8);
+    padding: 3px 10px;
+    border-radius: 3px;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: rgba(162,162,162,1);
+    }
+  }
+}
+
+.alert {
+  font-size: 16px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #eed3d7;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 0px;
+  right: 21px;
+  /* Each alert has its own width */
+  float: right;
+  clear: right;
+}
+
+.alert-green {
+  color: white;
+  background-color: #37BC9B;
+}
+
+.alert-red {
+  color: white;
+  background-color: #DA4453;
+}
