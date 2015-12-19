@@ -9,9 +9,6 @@ var clipboard = new Clipboard('.permalink');
 clipboard.on('success', function(e) {
   //Give a feedback to the user.
   ohSnap("Link copied to your clipboard", { duration: '2000', color: 'green' });
-  setTimeout(function(){
-    window.open(e.text, '_blank')
-  }, 2100);
 });
 
 clipboard.on('error', function(e) {
