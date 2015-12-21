@@ -11,6 +11,7 @@ layout: null
     {% for post in site.posts limit:10 %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
+        <author>@{{ post.author.twitter }} ({{ post.author.name }})</author>
         <description>{{ post.content | xml_escape }}</description>
         <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
         <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
