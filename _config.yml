@@ -1,6 +1,6 @@
 # Site settings
-title:       TIL
-description: 'Things learned. Share all the things.'
+title:       'ShareAllTheThings'
+description: 'Today I Learned.'
 baseurl:     ""
 url:         'http://shareallthethings.com'
 
