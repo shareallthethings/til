@@ -6,7 +6,7 @@ layout: default
   <div class="categories">
     {% for category in site.categories %}
       {% assign cat = category | first %}
-      <strong>{{ cat | capitalize }}</strong>
+      <strong id="{{ cat }}">{{ cat | capitalize }}</strong>
 
       <ul>
         {% for post in site.categories[cat] %}

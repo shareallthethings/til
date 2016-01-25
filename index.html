@@ -10,7 +10,7 @@ layout: default
         <header>
           <p class='category'>
             {% for category in post.categories %}
-            <a>{{ category }}</a>
+              <a href="/categories#{{ category }}">{{ category }}</a>
             {% endfor %}
           </p>
 
