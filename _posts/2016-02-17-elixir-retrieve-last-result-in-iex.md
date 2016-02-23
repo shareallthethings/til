@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Copy last result in IEX"
+title:      "Retrieve last result in IEX"
 date:       2016-02-17 15:00:00
 summary:    If you already play with Ruby, probably you run 'my_var = _' to get the last result. How
             do you do this with Elixir?
@@ -34,5 +34,5 @@ iex(5)> v(2)
 2
 ```
 
-As you can see, the function `v` can get the last value because it's using the default value `-1`
-or you can use `v(line_number)` to get the value from a previous one.
+As you can see, the function `v` can retrieve the last value because it's using the default value `-1`.
+You can use `v(line_number)` to select the value that you want to retrieve.
