@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      Replace ActiveRecord relations in memory
+title:      Replacing ActiveRecord relations in memory before saving.
 date:       2017-02-03 12:00:00
-summary:    Replace ActiveRecord relations in memory before saving.
+summary:    Replacing ActiveRecord relations in memory before saving.
 categories: rails
 author:
   name: Felix Descoteaux
