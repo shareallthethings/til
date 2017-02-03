@@ -47,7 +47,7 @@ end
 
 class Cat < ActiveRecord::Base; end
 
-class Dog < ActiveRecord::Base; end>>
+class Dog < ActiveRecord::Base; end
 ```
 
 Now let's say that Bob has 2 cats already.
