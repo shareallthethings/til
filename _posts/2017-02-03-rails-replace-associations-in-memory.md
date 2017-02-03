@@ -90,7 +90,7 @@ We can mark for destructions records we want to get rid off and ignore those
 during validation.
 
 First we need to do some changes to our models. We need to add the `autosave: true`
-option to our association and filter our instances that are marked for
+option to our association and filter out instances that are marked for
 destruction in validation.
 
 ```ruby
