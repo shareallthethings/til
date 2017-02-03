@@ -79,7 +79,7 @@ my mouth a little, why would we even need to touch the database?
 person.transaction do
  person.pets.replace([
    Pet.new(animal_id=2, animal_type=Cat.name),
-   Pet.new(animal_id=3, animal_type=Dog.name),
+   Pet.new(animal_id=1, animal_type=Dog.name),
  ])
  raise ActiveRecord::Rollback unless person.valid?
 end
