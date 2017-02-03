@@ -9,12 +9,11 @@ author:
   twitter: FelixDescoteaux
 ---
 
-I came across a particular situation where I needed to validate
-`has_many` relations dependencies from a parent model before committing
-replacements to the database.
+I came across a particular situation where I needed to perform high level validation on
+`has_many` relations from a parent model before committing replacements to the database.
 
 `transactions` can achieve the same thing by doing a rollback if the parent is
-invalid, but at the cost of database queries and coupling.
+invalid, but at the cost of database queries, coupling and non sense.
 
 For example, let's say we have a `Person` model, and a person can have pets, but
 no dogs and cats at the same time because they'll kill each other.
@@ -51,29 +50,30 @@ class Cat < ActiveRecord::Base; end
 class Dog < ActiveRecord::Base; end>>
 ```
 
-Now let's say that Bob has 2 cats already, but Grimelda, with `id=1`,
-attacked his newborn baby so he wants to get rid of it.
-Josephine, with `id=2`, is really sweet and wouldn't hurt a fly, so Bob
-wants to keep it.
+Now let's say that Bob has 2 cats already.
+
+Grimelda (`#<Cat id=1>`) attacked his newborn baby so he wants to get rid of it.
+Josephine (`#<Cat id=2>`) is really sweet and wouldn't hurt a fly, so Bob wants to keep it.
 
 Let's say that person also wants a new dog, because cats can be boring.
-Bob goes to the shelter and decides to adopt Jack, who has an `id` of `3`.
+Bob goes to the shelter and decides to adopt Jack (`#<Dog id=1>`).
 
-That person would do a `PUT` request to do the replacements.
+Then, Bob, being a REST fan, does a `PUT` request to do the replacements.
 
 ```
 PUT /person/342
 {
   "cat_ids": [2], // already owned
-  "dog_ids": [3]  // a new dog
+  "dog_ids": [1]  // a new dog
 }
 ```
 
 `ActiveRecord` lets us `#build` new associations in memory, but not delete in
-memory those we don't want anymore before committing (sorry Grimelda).
+memory those we don't want anymore before committing.
 
-Normally, a way to validate the associations would be to validate after replacing the associations inside a transaction, but
-that makes me puke in my mouth a little, why would we even need to touch the database?
+Normally, a way to validate the associations via the parent would be to validate
+after replacing the associations inside a transaction, but that makes me puke in
+my mouth a little, why would we even need to touch the database?
 
 ```ruby
 person.transaction do
@@ -85,7 +85,7 @@ person.transaction do
 end
 ```
 
-A way to replace associations in memory is... *DRUM ROLLS* ... `#mark_for_destruction`.
+A way to replace associations in memory is... *DRUM ROLLS* `#mark_for_destruction`!
 We can mark for destructions records we want to get rid off and ignore those
 during validation.
 
@@ -119,24 +119,27 @@ end
 Then we can validate in memory before touching the database.
 
 ```ruby
-existing_cat_ids = person.pets
-  .select { |pet| pet.animal_type == Cat.name }
-  .map(&:animal_id)
+existing_cat_ids =
+  person.pets
+    .select { |pet| pet.animal_type == Cat.name }
+    .map(&:animal_id)
 
 new_cat_ids = provided_cat_ids - existing_cat_ids
+
 new_cat_ids.each { |id| person.pets.build(animal_type: Cat.name, animal_id: id) }
 
 deprecated_cat_ids = existing_cat_ids - provided_cat_ids
-person.pets.select do |pet|
-  pet.animal_type == Cat.name && pet.animal_id.in?(deprecated_cat_ids)
-end.each(&:mark_for_destruction)
+
+person.pets
+  .select { |pet| pet.animal_type == Cat.name && pet.animal_id.in?(deprecated_cat_ids) }
+  .each(&:mark_for_destruction)
 
 # Do the same thing with dogs..
 
-# We can now validate without replacing, only instances not
+# We can now validate without touching the database, only instances not
 # marked for destruction will be validated.
 person.valid?
 
 # Will save new associations only and delete unwanted ones
 person.save
-```
+``
